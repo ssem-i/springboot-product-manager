@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{common :: commonHead}">
+    <title>SpringBoot Security</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+<h2 class="text-center"> 스프링 부트 보안</h2>
+
+<div sec:authorize="isAuthenticated()">
+    <p><span sec:authentication="principal.username">User</span> 계정으로 로그인 하셨습니다.</p>
+
+  <div class="d-grid">
+    <form th:action="@{/products}" method="get">
+        <input type="submit" value="상품 조회하기" class="btn custom-btn mt-3 btn-lg w-100"/>
+    </form>
+
+    <!-- <p><a th:href="@{/logout}">Logout</a></p>-->
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="로그아웃" class="btn custom-btn my-3 btn-lg w-100"/>
+    </form>
+  </div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="d-grid">
+            <h3>이 내용은 관리자만 볼 수 있습니다.</h3>
+            <a th:href="@{/admin/home}" class="btn btn-secondary mt-3 btn-lg">관리자 페이지로 이동하기</a>
+        </div>
+    </div>
+
+    Authenticated user roles:
+    <div sec:authorize="isAuthenticated()">
+        <div th:each="authority : ${#authentication.authorities}">
+            <span th:text="${authority.getAuthority()}">[Authority]</span>
+        </div>
+    </div>
+</div>
+
+
+        <div sec:authorize="isAnonymous()" class="d-grid">
+        <a class="btn custom-btn mt-3 btn-lg" th:href="@{/login}">로그인</a>
+        </div>
+        <div sec:authorize="isAnonymous()" class="d-grid">
+        <a class="btn custom-btn mt-3 btn-lg" th:href="@{/signup}">회원가입</a>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

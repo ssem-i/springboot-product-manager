@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+  <a th:href="@{/admin/users}" class="btn btn-primary">전체 사용자 조회</a>
+</div>
+</body>
+</html>

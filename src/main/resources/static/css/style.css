@@ -1,0 +1,10 @@
+.custom-btn {
+    background-color: #9150fd;
+    color: white;
+}
+
+.btn-fixed{
+    width: 150px;
+    height: 70px;
+    margin: 20px;
+}
