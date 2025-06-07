@@ -25,11 +25,11 @@
 
       <form method="post" th:action="@{/login}">
         <div th:if="${param.error}" class="alert alert-danger" role="alert">
-          아이디와 비밀번호를 다시 확인해 주세요.
+          이메일과 비밀번호를 다시 확인해 주세요!!
         </div>
 
         <div th:if="${param.logout}" class="alert alert-info" role="alert">
-          Successfully logged out
+          로그아웃이 완료되었습니다!!
         </div>
 
         <div class="form-floating mb-2">

@@ -21,10 +21,10 @@ public class AdminController {
     @GetMapping("/home")
     public String adminHome() {
         return "adminhome";
-    }
+    }   // 관리자 페이지
 
     @GetMapping("/users")
-    public String adminUsers(Model model) {
+    public String adminUsers(Model model) {     // 전체 사용자 목록 조회
         List<MyUser> listUsers = registrationService.findAllUsers();
         model.addAttribute("listUsers", listUsers);
         return "adminusers";

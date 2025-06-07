@@ -3,13 +3,23 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
-<head>
+<head th:insert="~{common :: commonHead}">
     <meta charset="UTF-8">
     <title>Admin Page</title>
 </head>
 <body>
+
 <div sec:authorize="hasRole('ROLE_ADMIN')">
-  <a th:href="@{/admin/users}" class="btn btn-primary">전체 사용자 조회</a>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center">관리자 페이지</h2>
+                <div class="d-grid">
+  <a th:href="@{/admin/users}" class="btn custom-btn mt-3 btn-lg">전체 사용자 조회</a>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

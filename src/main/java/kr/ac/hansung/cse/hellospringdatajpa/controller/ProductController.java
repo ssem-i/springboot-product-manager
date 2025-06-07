@@ -57,10 +57,14 @@ public class ProductController {
             List<ObjectError> errors = bindingResult.getAllErrors();
 
             for(ObjectError error:errors) {
-                System.out.println(error.getDefaultMessage());
+                System.out.println(error.getDefaultMessage());  // 콘솔에 출력
             }
 
-            return "edit_product";
+            if (product.getId() != null) {
+                return "edit_product";  // id가 있으면 수정 페이지
+            } else {
+                return "new_product";   // id가 없으면 등록 페이지
+            }
         }
         service.save(product);
         return "redirect:/products";

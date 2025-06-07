@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="~{common :: commonHead}">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,7 +39,7 @@
         </div>
 
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+          <button type="submit" class="btn custom-btn btn-lg">가입하기</button>
         </div>
       </form>
     </div>
