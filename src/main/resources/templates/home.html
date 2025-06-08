@@ -30,7 +30,6 @@
             <a th:href="@{/admin/home}" class="btn btn-secondary mt-3 btn-lg">관리자 페이지로 이동하기</a>
         </div>
     </div>
-
     Authenticated user roles:
     <div sec:authorize="isAuthenticated()">
         <div th:each="authority : ${#authentication.authorities}">
@@ -38,8 +37,6 @@
         </div>
     </div>
 </div>
-
-
         <div sec:authorize="isAnonymous()" class="d-grid">
         <a class="btn custom-btn mt-3 btn-lg" th:href="@{/login}">로그인</a>
         </div>

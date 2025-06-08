@@ -20,7 +20,6 @@ import java.util.Collection;
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
-
     @Override
     public UserDetails loadUserByUsername(String userName)
             throws UsernameNotFoundException {
@@ -36,7 +35,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .stream()
                 .map((role) -> role.getRolename())
                 .toArray(String[]::new);
-
         Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
         return authorities;
     }

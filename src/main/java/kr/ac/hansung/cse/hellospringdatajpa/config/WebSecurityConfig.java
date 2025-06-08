@@ -45,6 +45,7 @@ public class WebSecurityConfig {
                         .requestMatchers(PUBLIC_MATCHERS).permitAll()
                         .requestMatchers("/", "/home", "/signup").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/products/new", "/products/edit/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
@@ -64,7 +65,6 @@ public class WebSecurityConfig {
                 .userDetailsService(customUserDetailsService);
                /* .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/api/**"));*/
-
         return http.build();
     }
 }

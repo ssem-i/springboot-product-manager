@@ -29,5 +29,4 @@ public class AdminController {
         model.addAttribute("listUsers", listUsers);
         return "adminusers";
     }
-
 }

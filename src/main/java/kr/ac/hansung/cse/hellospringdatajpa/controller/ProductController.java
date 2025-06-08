@@ -41,7 +41,6 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String showEditProductPage(@PathVariable(name = "id") Long id, Model model) {
-
         Product product = service.get(id);
         model.addAttribute("product", product);
 
@@ -55,11 +54,9 @@ public class ProductController {
     public String saveProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
-
             for(ObjectError error:errors) {
                 System.out.println(error.getDefaultMessage());  // 콘솔에 출력
             }
-
             if (product.getId() != null) {
                 return "edit_product";  // id가 있으면 수정 페이지
             } else {

@@ -22,26 +22,21 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h1 class="text-center mb-4">로그인</h1>
-
       <form method="post" th:action="@{/login}">
         <div th:if="${param.error}" class="alert alert-danger" role="alert">
           이메일과 비밀번호를 다시 확인해 주세요!!
         </div>
-
         <div th:if="${param.logout}" class="alert alert-info" role="alert">
           로그아웃이 완료되었습니다!!
         </div>
-
         <div class="form-floating mb-2">
           <input type="email" id="username" name="username" class="form-control" placeholder="Email" required autofocus>
           <label for="username">Email address</label>
         </div>
-
         <div class="form-floating mb-3">
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
           <label for="password">Password</label>
         </div>
-
         <div class="d-grid">
           <button class="btn custom-btn btn-lg" type="submit">로그인</button>
         </div>

@@ -18,31 +18,23 @@ import java.util.Optional;
 @Transactional
 public class RegistrationServiceImpl implements RegistrationService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private RoleRepository roleRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     public MyUser createUser(MyUser user, List<MyRole> userRoles) {
         for (MyRole ur : userRoles) {
             if (roleRepository.findByRolename(ur.getRolename()).isEmpty()) {
                 roleRepository.save(ur);
             }
         }
-
         // generate new Bcrypt hash
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
-
         user.setRoles(userRoles);
-
         MyUser newUser = userRepository.save(user);
-
         return newUser;
     }
 
@@ -50,7 +42,6 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (userRepository.findByEmail(email).isPresent()) {
             return true;
         }
-
         return false;
     }
 
